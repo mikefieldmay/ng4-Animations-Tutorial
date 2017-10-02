@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { trigger, state, style } from "@angular/animations";
+import { trigger, state, style, transition, animate } from "@angular/animations";
 
 @Component({
   selector: 'app-root',
@@ -13,7 +13,9 @@ import { trigger, state, style } from "@angular/animations";
       state('highlighted', style({
         backgroundColor: 'blue',
         transform: 'translateX(100px)'
-      }))
+      })),
+      transition('normal => highlighted', animate(300)), // transition takes a string which indicates whichway the animation should go.
+      transition('highlighted => normal', animate(600)),// animate is a method. At it's most basic if you input a number it takes that mount of time to transition
     ])
   ] // we specify the animations this component should be aware of
 })
@@ -28,5 +30,9 @@ export class AppComponent {
 
 	onDelete(item) {
 		this.list.splice(this.list.indexOf(item), 1);
-	}
+  }
+
+  onAnimate() {
+    this.state == 'normal' ? this.state = 'highlighted' : this.state = 'normal';
+  }
 }

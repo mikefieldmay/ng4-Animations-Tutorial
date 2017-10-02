@@ -8,6 +8,10 @@
       <div
       style="width: 100px; height: 100px"
       [@divState]="state"></div>
+      <br>
+      <div
+      style="width: 100px; height: 100px"
+      [@wildState]="wildState"></div>
     </div>
   </div>
   <hr>
@@ -20,10 +24,27 @@
         <li
           class="list-group-item"
           (click)="onDelete(item)"
+          [@list1]="in"
           *ngFor="let item of list">
           {{ item }}
         </li>
       </ul>
     </div>
   </div>
+
+  <div class="row">
+    <div class="col-xs-12">
+      <hr>
+      <ul class="list-group">
+        <li
+          class="list-group-item"
+          (click)="onDelete(item)"
+          [@list2]="in"
+          *ngFor="let item of list">
+          {{ item }}
+        </li>
+      </ul>
+    </div>
+  </div>
+
 </div>
